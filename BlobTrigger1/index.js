@@ -8,9 +8,8 @@ module.exports = (context, myBlob) => {
 
         // Manipulate image
         image
-            .resize(200, Jimp.AUTO) 
-            .greyscale()
-            .getBuffer(Jimp.MIME_JPEG, (error, stream) => {
+            .resize(200, Jimp.AUTO)
+            .getBuffer(Jimp.AUTO, (error, buffer) => {
 
                 // Check for errors
                 if (error) {
@@ -21,7 +20,7 @@ module.exports = (context, myBlob) => {
                     context.log(`Successfully processed the image`);
 
                     // Bind the stream to the output binding to create a new blob
-                    context.done(null, stream);
+                    context.done(null, buffer);
 
                 }
 
